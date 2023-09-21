@@ -11,12 +11,18 @@ connectDB();
 
 const app = express();
 
+
+//EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
-app.use(express.json());
-app.use('/api',indexRouter)
-app.use('/api/users',userRouter)
+//Bodyparser
+
+app.use(express.urlencoded({extended:false}));
+
+//Routes
+app.use('/',indexRouter)
+app.use('/users',userRouter)
 
 
 
