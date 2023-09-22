@@ -4,14 +4,15 @@ import {
     logoutHandle,
     registerHandle,
 } from "../controllers/userControllers.js";
+import { forwardAuthenticated } from "../config/auth.js";
 
 const router = express.Router();
 
 //lOGIN PAGE
-router.get("/login", (req, res) => res.render("login"));
+router.get("/login",forwardAuthenticated, (req, res) => res.render("login"));
 
 //Register Page
-router.get("/register", (req, res) => res.render("register"));
+router.get("/register",forwardAuthenticated, (req, res) => res.render("register"));
 
 //Register handle
 
